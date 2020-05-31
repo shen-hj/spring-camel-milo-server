@@ -8,8 +8,8 @@ Prerequisiti:
 
 ## Tabel of content
 
-1. [Step1: Spring Init](#-Step1:-Spring-Init)
-1. [Step2: Importare il progetto Maven dentro Eclipse](#-Step2:-Importare-il-progetto-Maven-dentro-Eclipse)
+1. [Step1: Spring Init](#step1-spring-init)
+1. [Step2: Importare il progetto Maven dentro Eclipse](#step2-importare-il-progetto-maven-dentro-eclipse)
 
 ## Step1: Spring Init
 Per inizializzare il progetto utilizzeremo Spring Initializr 

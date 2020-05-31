@@ -3,9 +3,9 @@
 [Back To README](/README.md)
 
 ## Table of content
-1. [Step1: creare il progetto su GitHub](#-Step1:-Creare-il-progetto-su-github)
-1. [Step2: Readme and .gitignore](#-Step2:-Readme-and-.gitignore)
-1. [Step3: Repo Download](#-Step3:-Repo-Download)
+1. [Step1: creare il progetto su GitHub](#step1-creare-il-progetto-su-github)
+1. [Step2: Readme and .gitignore](#step2-readme-and-gitignore)
+1. [Step3: Repo Download](#step3-repo-download)
 
 ## Step1: Creare il progetto su github
 
