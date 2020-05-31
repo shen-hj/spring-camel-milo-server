@@ -1,6 +1,6 @@
 # Creazione del progetto SpringBoot
 
-[Back To README](/README.md)
+[<Back](Documentation.md)
 
 Prerequisiti: 
 - Java 9+ 
@@ -56,6 +56,7 @@ In questo step aggiungeremo le librerie Apache Camel Milo.
 	<!-- use the same version as your Camel core version -->
 </dependency> 
 ```
-> La versione di Camel viene inserita nella sezione `<properties>` del `pom.xml`.
+> La versione di Camel viene inserita nella sezione `<properties>` del `pom.xml` `<camel.milo.version>3.0.0</camel.milo.version>`
+
 ---
 @Copiright [Cristina Lombardo](https://github.com/cristinalombardo/) / [License](/LICENSE)

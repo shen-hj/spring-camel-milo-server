@@ -1,16 +1,19 @@
 # Server OPC con Apache Camel Milo
 
-Questo progetto descrive i passi per creare un Server OPC utilizzando Apache Camel Milo all'interno del Framwork SpringBoot.
+Il presente progetto fornisce una implementazione di un server OPC UA implementato con Apache Camel Milo all'interno di Spring Boot.
 
-Prerequisiti del progetto:
-- Java JDK 9+
-- Maven
-- Git
+La realizzazione di questo pogetto è stata effettuata in accordo alle indicazioni del corso di Informatica Industriale LM Ing. Informatica dell'Università di Catania.
 
-Di seguito le attività base per utilizzare il progetto:
 
-- Creazione dei progetto su GitHub: [Create GitHub](doc/Create-GitHub.md)
-- Inizializzazione del progetto Spring Boot: [Create Spring Boot](doc/Create-SpringBoot.md)
+## Quick Start
+La versione eseguibile del progetto è presente nella cartella `dist` .
+
+Seguire le istruzioni presenti al seguente link: [Quick Start](dist/quick-start.md)
+
+## Documeatazione
+La documentazione è presente al seguente link: [Documentazione](doc/Documentation.md)
+
+
 
 ---
 @Copiright [Cristina Lombardo](https://github.com/cristinalombardo/) / [License](/LICENSE)
