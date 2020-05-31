@@ -10,4 +10,8 @@ Prerequisiti del progetto:
 
 Di seguito le attività base per utilizzare il progetto:
 
-- Creazione dei progetto su GitHub: [INIT-PROJECT](INIT-PROJECT.md)
+- Creazione dei progetto su GitHub: [Create GitHub](doc/Create-GitHub.md)
+- Inizializzazione del progetto Spring Boot: [Create Spring Boot](doc/Create-SpringBoot.md)
+
+---
+@Copiright [Cristina Lombardo](https://github.com/cristinalombardo/) / [License](/LICENSE)
