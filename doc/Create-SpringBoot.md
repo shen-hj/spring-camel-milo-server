@@ -6,6 +6,11 @@ Prerequisiti:
 - Java 9+ 
 - Eclipse per j2ee con Spring Tools Suite Plugin installato
 
+## Tabel of content
+
+1. [Step1: Spring Init](#-Step1:-Spring-Init)
+1. [Step2: Importare il progetto Maven dentro Eclipse](#-Step2:-Importare-il-progetto-Maven-dentro-Eclipse)
+
 ## Step1: Spring Init
 Per inizializzare il progetto utilizzeremo Spring Initializr 
 
@@ -31,7 +36,11 @@ Per importare il progetto i passi sono:
 1. Aprire Eclipse 
 1. Cliccare su File->Import... e selezionare Existing Maven Project 
 ![Import Maven](img/import-maven.png)
-1. Selezionare la cartella dove risiede il progetto e cliccare su Finish 
+1. Selezionare la cartella dove risiede il progetto e cliccare su Finish
+
+A questo punto il progetto dovrebbe presentarsi nel seguente modo:
+
+![Eclipse Project](img/eclipse-project.png)
 
 
 ---

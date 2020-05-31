@@ -1,5 +1,4 @@
 # Server OPC con Apache Camel Milo
-Server Apache Camel Milo
 
 Questo progetto descrive i passi per creare un Server OPC utilizzando Apache Camel Milo all'interno del Framwork SpringBoot.
 
