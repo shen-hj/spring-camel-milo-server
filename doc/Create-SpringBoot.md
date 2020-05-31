@@ -10,6 +10,7 @@ Prerequisiti:
 
 1. [Step1: Spring Init](#step1-spring-init)
 1. [Step2: Importare il progetto Maven dentro Eclipse](#step2-importare-il-progetto-maven-dentro-eclipse)
+1. [Step3: Apache Milo](#step3-apache-milo)
 
 ## Step1: Spring Init
 Per inizializzare il progetto utilizzeremo Spring Initializr 
@@ -42,6 +43,19 @@ A questo punto il progetto dovrebbe presentarsi nel seguente modo:
 
 ![Eclipse Project](img/eclipse-project.png)
 
+## Step3: Apache Milo
+In questo step aggiungeremo le librerie Apache Camel Milo.
 
+1. Apriamo il file `pom.xml`
+1. Aggiungiamo la seguente dipendenza al file
+```Xml
+<dependency>
+	<groupId>org.apache.camel.springboot</groupId>
+	<artifactId>camel-milo-starter</artifactId>
+	<version>${camel.milo.version}</version>
+	<!-- use the same version as your Camel core version -->
+</dependency> 
+```
+> La versione di Camel viene inserita nella sezione `<properties>` del `pom.xml`.
 ---
 @Copiright [Cristina Lombardo](https://github.com/cristinalombardo/) / [License](/LICENSE)
