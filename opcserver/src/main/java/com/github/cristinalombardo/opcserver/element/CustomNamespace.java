@@ -18,7 +18,6 @@ import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.api.DataItem;
 import org.eclipse.milo.opcua.sdk.server.api.ManagedNamespace;
 import org.eclipse.milo.opcua.sdk.server.api.MonitoredItem;
-import org.eclipse.milo.opcua.sdk.server.model.nodes.objects.FolderNode;
 import org.eclipse.milo.opcua.sdk.server.nodes.UaFolderNode;
 import org.eclipse.milo.opcua.sdk.server.nodes.UaMethodNode;
 import org.eclipse.milo.opcua.sdk.server.nodes.UaNode;
@@ -59,7 +58,7 @@ public class CustomNamespace extends ManagedNamespace {
                 .getManagedNode(Identifiers.ObjectsFolder);
 
         objectsFolder.ifPresent(node -> {
-            ((FolderNode) node).addComponent(folder);
+            ((UaFolderNode) node).addComponent(folder);
         });
 
         // add single variable

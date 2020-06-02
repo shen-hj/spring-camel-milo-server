@@ -11,13 +11,11 @@ import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.api.config.OpcUaServerConfig;
 import org.eclipse.milo.opcua.sdk.server.api.config.OpcUaServerConfigBuilder;
 import org.eclipse.milo.opcua.sdk.server.identity.AnonymousIdentityValidator;
-import org.eclipse.milo.opcua.sdk.server.identity.CompositeValidator;
 import org.eclipse.milo.opcua.stack.core.UaException;
-import org.eclipse.milo.opcua.stack.core.security.CertificateValidator;
 import org.eclipse.milo.opcua.stack.core.security.DefaultCertificateManager;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
-import org.eclipse.milo.opcua.stack.core.transport.TransportProfile;
 import org.eclipse.milo.opcua.stack.server.EndpointConfiguration;
+import org.eclipse.milo.opcua.stack.server.security.ServerCertificateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,9 +31,7 @@ public class OpcServerConf {
 		System.out.println("Start OPC Server");
 		final OpcUaServerConfigBuilder builder = new OpcUaServerConfigBuilder();
 
-		builder.setIdentityValidator(new CompositeValidator(
-				AnonymousIdentityValidator.INSTANCE // You should better ask who knocked, right?
-				));
+		builder.setIdentityValidator(AnonymousIdentityValidator.INSTANCE);
 
 		final EndpointConfiguration.Builder endpointBuilder = new EndpointConfiguration.Builder();
 
@@ -56,16 +52,19 @@ public class OpcServerConf {
 		
 		builder.setCertificateManager(new DefaultCertificateManager()); // ... don't to this at home! ...
 
-		builder.setCertificateValidator(new CertificateValidator() {
-
+		builder.setCertificateValidator(new ServerCertificateValidator() {
+			
 			@Override
-			public void validate(final X509Certificate certificate) throws UaException {
-				// ... ever! ...
+			public void validateCertificateChain(List<X509Certificate> certificateChain) throws UaException {
+				// TODO Auto-generated method stub
+				
 			}
-
+			
 			@Override
-			public void verifyTrustChain(final List<X509Certificate> certificateChain) throws UaException {
-				// ... I mean it!
+			public void validateCertificateChain(List<X509Certificate> certificateChain, String applicationUri)
+					throws UaException {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 
