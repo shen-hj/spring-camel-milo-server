@@ -24,7 +24,10 @@ public class OpcCamelServerApplication {
 			System.out.println(server.getStatus());
 			
 			//Customize server configuration
+			//......
+			//
 			
+			//Start Camel Server
 			CamelSpringBootApplicationController applicationController =
 					ctx.getBean(CamelSpringBootApplicationController.class);
 			applicationController.run();
