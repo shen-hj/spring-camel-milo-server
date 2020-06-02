@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>9</java.version>
-		<milo.version>0.3.2</milo.version>
+		<milo.version>0.4.1</milo.version>
 	</properties>
 
 	<dependencies>
