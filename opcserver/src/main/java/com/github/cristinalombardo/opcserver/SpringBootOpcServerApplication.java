@@ -1,5 +1,6 @@
 package com.github.cristinalombardo.opcserver;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
@@ -28,8 +29,11 @@ public class SpringBootOpcServerApplication {
 
 			server.startup().get(); 
 
-			while(true)
-				Thread.sleep(1000);
+			final CompletableFuture<Void> future = new CompletableFuture<>();
+
+	        Runtime.getRuntime().addShutdownHook(new Thread(() -> future.complete(null)));
+
+	        future.get();
 		};
 	}
 
