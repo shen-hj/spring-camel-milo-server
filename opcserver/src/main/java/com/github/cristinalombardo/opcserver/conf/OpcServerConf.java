@@ -16,6 +16,7 @@ import org.eclipse.milo.opcua.stack.core.security.DefaultCertificateManager;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.server.EndpointConfiguration;
 import org.eclipse.milo.opcua.stack.server.security.ServerCertificateValidator;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,56 +27,71 @@ public class OpcServerConf {
 
 	
 	@Bean("my-server")
-	public OpcUaServer opcServer() throws InterruptedException, ExecutionException {
+	public OpcUaServer opcServer(
+			@Value("${opc.server.bind-address:localhost}") String bindAddress,
+			@Value("${opc.server.bind-port:4850}") Integer bindPort
+			) throws InterruptedException, ExecutionException {
 
-		System.out.println("Start OPC Server");
-		final OpcUaServerConfigBuilder builder = new OpcUaServerConfigBuilder();
+		System.out.println("Create OPC Server");
+		
+		//Define server configuration
+		final OpcUaServerConfigBuilder configBuilder = new OpcUaServerConfigBuilder();
 
-		builder.setIdentityValidator(AnonymousIdentityValidator.INSTANCE);
+		//Allow anonymous login
+		configBuilder.setIdentityValidator(AnonymousIdentityValidator.INSTANCE);
 
+		
+		//Define endpoint builder
 		final EndpointConfiguration.Builder endpointBuilder = new EndpointConfiguration.Builder();
-
+		
+		//Allow anonymous endpoint
 		endpointBuilder.addTokenPolicies(
-				OpcUaServerConfig.USER_TOKEN_POLICY_ANONYMOUS // You wouldn't leave you door open, would you?
+				OpcUaServerConfig.USER_TOKEN_POLICY_ANONYMOUS
 				);
 
-		endpointBuilder.setSecurityPolicy(SecurityPolicy.None); // ... or give everyone access to your fridge ...
+		//Disable security for this endpoint
+		endpointBuilder.setSecurityPolicy(SecurityPolicy.None);
 
-		endpointBuilder.setBindAddress("0.0.0.0");
-		endpointBuilder.setBindPort(4840);
+		//Binding on all network adapter
+		endpointBuilder.setBindAddress(bindAddress);
+		
+		//Binding server on specific port
+		endpointBuilder.setBindPort(bindPort);
+		
+		//Add endpoints to configuration
+		configBuilder.setEndpoints(singleton(endpointBuilder.build()));
+
+		//Application name
+		configBuilder.setApplicationName(english("Cristina Demo OPC UA Application"));
+		
+		//Application uri
+		configBuilder.setApplicationUri("urn:com:github:cristinalombardo:opcserver");
 		
 		
-		builder.setEndpoints(singleton(endpointBuilder.build()));
+		//Disable certification checks
+		configBuilder.setCertificateManager(new DefaultCertificateManager());
 
-		builder.setApplicationName(english("Foo Bar Server"));
-		builder.setApplicationUri("urn:my:example");
-		
-		builder.setCertificateManager(new DefaultCertificateManager()); // ... don't to this at home! ...
-
-		builder.setCertificateValidator(new ServerCertificateValidator() {
+		//Accept all certificates !!!! LOW SECURITY !!!!
+		configBuilder.setCertificateValidator(new ServerCertificateValidator() {
 			
 			@Override
 			public void validateCertificateChain(List<X509Certificate> certificateChain) throws UaException {
-				// TODO Auto-generated method stub
-				
+				// Validation rules
 			}
 			
 			@Override
 			public void validateCertificateChain(List<X509Certificate> certificateChain, String applicationUri)
 					throws UaException {
-				// TODO Auto-generated method stub
-				
+				// Validation rules
 			}
 		});
 
-		final OpcUaServer server = new OpcUaServer(builder.build());
+		
+		//Create server as single istance according Spring Boot rules
+		final OpcUaServer server = new OpcUaServer(configBuilder.build());
 
-		// register namespace
-
+		//Register namespace
 		server.getAddressSpaceManager().register(new CustomNamespace(server, CustomNamespace.URI));
-
-		// start it up
-
 		
 		return server;
 	}

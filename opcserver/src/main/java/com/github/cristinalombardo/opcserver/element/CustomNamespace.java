@@ -31,7 +31,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 
 public class CustomNamespace extends ManagedNamespace {
 
-    public static final String URI = "urn:my:custom:namespace";
+    public static final String URI = "urn:com:github:cristinalombardo:opcserver:namespace";
 
     private final SubscriptionModel subscriptionModel;
 
@@ -47,8 +47,8 @@ public class CustomNamespace extends ManagedNamespace {
         final UaFolderNode folder = new UaFolderNode(
                 context,
                 newNodeId(1),
-                newQualifiedName("FooBarFolder"),
-                LocalizedText.english("Foo Bar Folder"));
+                newQualifiedName("DemoFolder"),
+                LocalizedText.english("Demo Folder"));
         context.getNodeManager().addNode(folder);
 
         // add our folder to the objects folder

@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringBootOpcServerApplication {
-
-
+	
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-
+		
+		//Start Spring Boot Application to create IoT Container
 		SpringApplication.run(SpringBootOpcServerApplication.class, args);
 	}
 
@@ -23,16 +23,20 @@ public class SpringBootOpcServerApplication {
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 
+			//Execute after IoT creation
 			System.out.println("Run after startup");
 
-			OpcUaServer server = (OpcUaServer) ctx.getBean("my-server");
+			
+			//Get the OpcServer from IoT container
+			OpcUaServer server = (OpcUaServer) ctx.getBean(OpcUaServer.class);
 
+			//Start OpcUa Server
 			server.startup().get(); 
 
+			
+			//Persist in execution
 			final CompletableFuture<Void> future = new CompletableFuture<>();
-
 	        Runtime.getRuntime().addShutdownHook(new Thread(() -> future.complete(null)));
-
 	        future.get();
 		};
 	}
