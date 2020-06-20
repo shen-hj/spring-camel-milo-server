@@ -8,7 +8,7 @@
  * Contributors:
  *     Jens Reimann - initial API and implementation
  *******************************************************************************/
-package com.github.cristinalombardo.opcserver.element;
+package com.github.cristinalombardo.opcserver.simpleserver;
 
 import org.eclipse.milo.opcua.sdk.server.annotations.UaInputArgument;
 import org.eclipse.milo.opcua.sdk.server.annotations.UaMethod;

@@ -1,19 +1,23 @@
 package com.github.cristinalombardo.opcserver;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.github.cristinalombardo.opcserver.conf.OpcServerConf;
 import com.github.cristinalombardo.opcserver.secureserver.SecureServer;
+import com.github.cristinalombardo.opcserver.simpleserver.SimpleServer;
 
 @SpringBootApplication
 public class SpringBootOpcServerApplication {
+	
+	private Log logger = LogFactory.getLog(OpcServerConf.class); 
 	
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		
@@ -24,19 +28,21 @@ public class SpringBootOpcServerApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-
-			//Execute after IoT creation
-			System.out.println("Run after startup");
-
 			
-			//Get the OpcServer from IoT container
-			OpcUaServer server = (OpcUaServer) ctx.getBean("simple-server");
 
-			//Start OpcUa Server
-			server.startup().get(); 
+			logger.info("Startup Simple Server");
+			//Get Simple OpcUa Server from IoT container
+			SimpleServer simpleServer = (SimpleServer) ctx.getBean("simple-server");
+
+			//Start Simple OpcUa Server
+			simpleServer.startServer().get(); 
 			
+			
+			logger.info("Startup Secure Server");
+			//Get Secure Server OpcUa Server from IoT container
 			SecureServer secureServer = (SecureServer) ctx.getBean("secure-server");
 			
+			//Start Secure OpcUa Server
 			secureServer.startServer().get();
 
 			

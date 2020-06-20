@@ -8,12 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.github.cristinalombardo.opcserver.simpleserver.SimpleServer;
+
 @Controller
 public class ServerInfoController {
 	
 	@Autowired
 	@Qualifier("simple-server")
-	private OpcUaServer server;
+	private SimpleServer server;
 	
 	@GetMapping("/")
 	public ResponseEntity<String> getServerStatus() {

@@ -8,7 +8,7 @@
  * Contributors:
  *     Jens Reimann - initial API and implementation
  *******************************************************************************/
-package com.github.cristinalombardo.opcserver.element;
+package com.github.cristinalombardo.opcserver.simpleserver;
 
 
 import java.util.List;
