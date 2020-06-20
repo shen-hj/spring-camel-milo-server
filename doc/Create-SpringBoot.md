@@ -21,7 +21,7 @@ Inizializzare il progetto in accordo alla seguente immagine
 ![Spring Boot Init](img/springboot-init.png)
 
 Per inizializzare il progetto abbiamo utilizzato le seguenti configurazioni:
-- Maven: Utiliuzzeremo Maven per coimpilare il progetto
+- Maven: Utilizzeremo Maven per compilare il progetto
 - Spring Boot 2.3.0: Versione Stable di Spring Boot al momento di questo tutorial
 - Packaging Jar: Si vuole realizzare un'applicazione standalone
 - Java 11: Apache Camel Milo richiede Java 9+
