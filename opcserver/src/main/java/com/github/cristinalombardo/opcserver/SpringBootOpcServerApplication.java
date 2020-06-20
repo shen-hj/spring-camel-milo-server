@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.github.cristinalombardo.opcserver.secureserver.SecureServer;
+
 @SpringBootApplication
 public class SpringBootOpcServerApplication {
 	
@@ -28,16 +30,16 @@ public class SpringBootOpcServerApplication {
 
 			
 			//Get the OpcServer from IoT container
-			OpcUaServer server = (OpcUaServer) ctx.getBean(OpcUaServer.class);
+			OpcUaServer server = (OpcUaServer) ctx.getBean("simple-server");
 
 			//Start OpcUa Server
 			server.startup().get(); 
+			
+			SecureServer secureServer = (SecureServer) ctx.getBean("secure-server");
+			
+			secureServer.startServer().get();
 
 			
-			//Persist in execution
-			final CompletableFuture<Void> future = new CompletableFuture<>();
-	        Runtime.getRuntime().addShutdownHook(new Thread(() -> future.complete(null)));
-	        future.get();
 		};
 	}
 
