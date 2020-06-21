@@ -39,7 +39,7 @@ public class AttributeLoggingFilter implements AttributeFilter {
 
         // only log external reads
         if (attributePredicate.test(attributeId) && ctx.getSession().isPresent()) {
-            logger.info(
+            logger.debug(
                 "get nodeId={} attributeId={} value={}",
                 ctx.getNode().getNodeId(), attributeId, value
             );
