@@ -1,6 +1,5 @@
 package com.github.cristinalombardo.opcserver.web;
 
-import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;

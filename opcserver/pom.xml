@@ -40,6 +40,11 @@
 			<artifactId>sdk-client</artifactId>
 			<version>${milo.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.milo</groupId>
+			<artifactId>dictionary-manager</artifactId>
+			<version>${milo.version}</version>
+		</dependency>
 
 		<!-- DevTool for Spring -->
 		<dependency>

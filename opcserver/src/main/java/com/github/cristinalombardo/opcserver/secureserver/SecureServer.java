@@ -37,6 +37,8 @@ public class SecureServer {
 	private final Log logger = LogFactory.getLog(getClass()); 
 
 	private final OpcUaServer server;
+	
+	private final SecureServerNamespace namespace;
 
 	public SecureServer(String bindAddress, Integer bindPort) throws Exception {
 		//Create directory for store certificate
@@ -130,6 +132,10 @@ public class SecureServer {
 
 			//Create the server
 			server = new OpcUaServer(serverConfig);
+			
+			
+			//Create namespace to add object to this server
+			this.namespace = new SecureServerNamespace(server, "urn:com:github:cristinalombardo:secure-server:indinf");
 
 
 
@@ -171,7 +177,7 @@ public class SecureServer {
 				.setSecurityMode(MessageSecurityMode.SignAndEncrypt);
 
 
-		//OPC.TCP None / Nobe
+		//OPC.TCP None / None
 		endpointConfigurations.add(buildTcpEndpoint(noSecurityBuilder, bindPort));
 
 		//OPC.TCP Sign Basic256
@@ -214,6 +220,10 @@ public class SecureServer {
 	}
 	
 	public CompletableFuture<OpcUaServer> startServer() {
+		//Startup the server namespace
+		this.namespace.startup();
+		
+		//Startup the server
 		return this.server.startup();
 	}
 
