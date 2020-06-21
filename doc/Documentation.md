@@ -3,9 +3,10 @@
 <!-- TOC depthFrom:2 -->
 
 - [Introduzione](#introduzione)
-- [Perché Spring](#perché-spring)
+- [Perché Spring Boot](#perché-spring-boot)
 - [Descrizione del progetto](#descrizione-del-progetto)
-- [Funzionameto](#funzionameto)
+    - [Strumenti utilizati](#strumenti-utilizati)
+- [Funzionamento](#funzionamento)
 - [Annex 1: GitHub](#annex-1-github)
     - [Step1: Creare il progetto su github](#step1-creare-il-progetto-su-github)
     - [Step2: Readme and .gitignore](#step2-readme-and-gitignore)
@@ -25,13 +26,34 @@ La presente documentazione descrive come poter implementare un Server Opc utiliz
 
 L'idea di questo progetto è quella di implementare il server Opc utilizzando [Sping Boot](https://spring.io/projects/spring-boot), un framework di sviluppo molto diffuso anche in ambito java enterprise.
 
-## Perché Spring
-//TODO
+## Perché Spring Boot
+Spring Boot rappresenta un framework che aiuta lo sviluppatore ad implementare automaticamente dei pattern architetturali durante lo sviluppo del progetto.
+
+Capo saldo di Spring Boot e più in generale di Spring framework è il concetto dell'IoC (Inversion of control). Il framework definisce quello che si chiama IoC Container, l'IoC Container rappresenta un'area nella quale vengono instanziati gli oggetti del progetto. Gli oggetti che si trovano all'interno del Container vengono instanziati automaticamente utilizzando di default il pattern Singleton evitando così la proliferazione di oggetti nel heap-space di java. Tutti gli oggetti definiti nel Container sono disponibili per essere utilizzati dagli altri oggetti del sistema, in pratica ogni oggetto potrà utilizzare gli altri senza doverli costruire il tutto facilitato dall'annotazione `@Autowire`. Questa documentazione non ha come obiettivo la descrizione dettagliata del framework, per maggiori informazioni consultare la documentazione ufficiale.
 
 ## Descrizione del progetto
-//TODO
+Il progetto si struttura in diverse cartelle in accordo alla seguente struttura: 
+```
+spring-camel-milo-server
+	├── dist
+	├── doc
+	├── opccamelserver
+	└── opcserver
+```
+dove:
+- dist: contiene l'eseguibile di questo progetto, dentro la cartella è presente una descrizione per far partire il progetto.
+- doc: contiene i sorgenti della documentazione.
+- opccamelserver: contiene un server Opc di esempio utilizzando Apache Camel come descritto nell'[Annex 2](#annex-2-camel-demo-with-spring-boot).
+- opcserver: contenente il progetto java oggetto della presente documentazione.
 
-## Funzionameto
+### Strumenti utilizati
+
+- Java SE 9
+- Maven
+- Eclipse with Spring tool suite
+- [Spring initializr](https://start.spring.io/)
+
+## Funzionamento
 //TODO
 
 <div style="page-break-after: always;"></div>
