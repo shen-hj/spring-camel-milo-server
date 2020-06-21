@@ -16,15 +16,25 @@
     - [Step3: Apache Milo](#step3-apache-milo)
 
 <!-- /TOC -->
+<div style="page-break-after: always;"></div>
 
 ## Introduzione
-Il presnete documento presenta la documentazione di progetto per la materia informatica industriale
+Nell'ambito del corso di Informatica Industriale è stato richiesto di sviluppare un Server OpcUa. 
+
+La presente documentazione descrive come poter implementare un Server Opc utilizzando come standard SDK per implementare lo stack protocollare [Eclipse Milo](https://github.com/eclipse/milo). 
+
+L'idea di questo progetto è quella di implementare il server Opc utilizzando [Sping Boot](https://spring.io/projects/spring-boot), un framework di sviluppo molto diffuso anche in ambito java enterprise.
 
 ## Perché Spring
+//TODO
 
 ## Descrizione del progetto
+//TODO
 
 ## Funzionameto
+//TODO
+
+<div style="page-break-after: always;"></div>
 
 ## Annex 1: GitHub
 
@@ -43,6 +53,8 @@ Come template del .gitignore è stato scelto Maven.
 
 ### Step3: Repo Download
 Creare il repository e clonarlo in locale con il programma preferito di gestione del git.
+
+<div style="page-break-after: always;"></div>
 
 ## Annex 2: Camel Demo with Spring Boot
 Prerequisiti: 
